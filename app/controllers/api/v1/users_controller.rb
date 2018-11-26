@@ -12,7 +12,8 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     byebug
-    @user = User.new(user_params)
+    @user = User.new(JSON.parse(user_params[:user]))
+    @user.avatar.attach(user_params[:avatar])
     if @user.save
       render json: @user, status: :ok
     else
@@ -22,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name,:password,:age,:proficiency,:avatar, address: [:street_address, :city, :state,:zip_code])
+    params.permit(:user, :avatar)
   end
 
 end
