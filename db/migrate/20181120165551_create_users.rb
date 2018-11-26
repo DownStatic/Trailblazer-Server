@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password
       t.string :proficiency
       t.jsonb :address
-      t.string :avatar
 
       t.timestamps
     end
