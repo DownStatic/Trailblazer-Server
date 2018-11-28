@@ -3,8 +3,7 @@ class UserSerializer < ActiveModel::Serializer
   attributes(*User.attribute_names.map(&:to_sym), :avatar_url)
 
   def avatar_url
-    variant = object.avatar.variant(resize: "100x100")
-    return rails_blob_url(variant)
+     return rails_blob_url(object.avatar)
   end
 
 end
