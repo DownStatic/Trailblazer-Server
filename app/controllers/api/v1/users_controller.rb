@@ -11,6 +11,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
+    byebug
     @user = User.new(JSON.parse(user_params[:user]))
     @user.avatar.attach(user_params[:avatar])
     if @user.save
@@ -22,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:user, :avatar)
+    params.permit(:user, :avatar, :coords)
   end
 
 end
