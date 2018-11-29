@@ -11,8 +11,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    byebug
     @user = User.new(JSON.parse(user_params[:user]))
+    @user.coords = JSON.parse(user_params[:coords])
     @user.avatar.attach(user_params[:avatar])
     if @user.save
       render json: @user, status: :ok
