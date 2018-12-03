@@ -1,4 +1,5 @@
 class Api::V1::LandmarksController < ApplicationController
+  skip_before_action :authorized, only: %i[index]
 
   def create
     @landmark = Landmark.new(JSON.parse(landmark_params[:landmark]))
