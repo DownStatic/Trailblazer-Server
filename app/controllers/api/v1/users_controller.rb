@@ -1,4 +1,9 @@
 class Api::V1::UsersController < ApplicationController
+  skip_before_action :authorized, only: [:create]
+
+  def profile
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
+  end
 
   def index
     @users = User.all
@@ -15,9 +20,10 @@ class Api::V1::UsersController < ApplicationController
     @user.coords = JSON.parse(user_params[:coords])
     @user.avatar.attach(user_params[:avatar])
     if @user.save
-      render json: @user, status: :ok
+      @token = encode_token(user_id: @user.id)
+      render json: {user: UserSerializer.new(@user), jwt: @token}, status: :created
     else
-      render json: nil, status: 500
+      render json: {error: 'Failed to create user.'}, status: :not_acceptable
     end
   end
 

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       resources :landmarks
       resources :recommendations
       resources :users
+      post '/login', to: 'auth#create'
+      get '/profile', to: 'users#profile'
     end
   end
 end
