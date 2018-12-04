@@ -1,3 +1,3 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes(*Comment.attribute_names.map(&:to_sym))
+  attributes(:text,:user_id,:trail_id)
 end
