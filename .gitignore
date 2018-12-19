@@ -13,6 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore secrets and keys
+/config/secrets/*
+
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
