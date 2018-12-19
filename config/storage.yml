@@ -18,7 +18,7 @@ local:
 google:
   service: GCS
   project: Trailblazer
-  credentials: <%= Rails.root.join("config/secrets/Trailblazer-rails-key.json") %>
+  credentials: <%= Rails.root.join("secrets/Trailblazer-rails-key.json") %>
   bucket: trailblazer-rails
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
