@@ -7,7 +7,7 @@ class UserSerializer < ActiveModel::Serializer
     # return rails_blob_url(object.avatar)
 
     # AWS url
-    return url_for(object.avatar)
+    return object.avatar.service_url
   end
 
 end
