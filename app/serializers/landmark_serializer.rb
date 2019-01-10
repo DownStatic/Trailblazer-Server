@@ -3,7 +3,11 @@ class LandmarkSerializer < ActiveModel::Serializer
   attributes(:id,:details,:user,:trail_id,:coords,:image_url)
 
   def image_url
-    return rails_blob_url(object.image)
+    # local storage url
+    # return rails_blob_url(object.image)
+
+    # AWS url
+    return object.image.service_url
   end
 
   def user
